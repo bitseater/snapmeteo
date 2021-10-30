@@ -36,7 +36,7 @@ slots:
 
 apps:
   meteo:
-    command: bin/desktop-launch $SNAP/bin/snapcraft-preload $SNAP/usr/bin/com.gitlab.bitseater.meteo
+    command: desktop-launch meteo
     plugs:
       - x11
       - desktop
@@ -71,15 +71,8 @@ parts:
     override-build: |
       snapcraftctl build
       mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
-  snapcraft-preload:
-    source: https://github.com/sergiusens/snapcraft-preload.git
-    plugin: cmake
-    build-packages:
-      - on amd64:
-        - gcc-multilib
-        - g++-multilib
   meteo-app:
-    after: [meson, desktop-gnome-platform, snapcraft-preload]
+    after: [meson, desktop-gnome-platform]
     source: https://gitlab.com/bitseater/meteo/-/archive/0.9.9/meteo-0.9.9.tar
     source-type: tar
     plugin: meson
