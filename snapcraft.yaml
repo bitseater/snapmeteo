@@ -1,0 +1,66 @@
+name: meteo
+version: '0.9.9'
+summary: Know the forecast of the next hours and days, with data and maps
+description: |
+  Current weather, with information about temperature, pressure, wind
+  speed and direction, sunrise and sunset. Show awesome maps with all
+  this information. Switch between some maps distributors.
+grade: stable
+confinement: strict
+base: core20
+
+slots:
+  dbus-meteo:
+    interface: dbus
+    bus: session
+    name: com.gitlab.bitseater.meteo
+
+apps:
+  meteo:
+    command: bin/desktop-launch $SNAP/bin/snapcraft-preload $SNAP/usr/bin/com.gitlab.bitseater.meteo
+    plugs:
+      - x11
+      - desktop
+      - desktop-legacy
+      - wayland
+      - unity7
+      - home
+      - browser-support
+      - locale-control
+      - gsettings
+      - network
+      - opengl
+    environment:
+      GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
+      LD_LIBRARY_PATH: $SNAP/usr/lib/*/webkit2gtk-4.0/:$LD_LIBRARY_PATH
+    desktop: usr/share/applications/com.gitlab.bitseater.meteo.desktop
+
+parts:
+  meson:
+    plugin: nil
+    override-build: |
+      apt install -y python3 python3-setuptools python3-pip ninja-build
+      pip3 install meson
+  meteo-app:
+    after: [meson, desktop-gtk3, snapcraft-preload]
+    source: https://gitlab.com/bitseater/meteo/-/archive/0.9.9/meteo-0.9.9.tar
+    source-type: tar
+    plugin: meson
+    meson-parameters: [--prefix=/usr]
+    build-packages:
+      - build-essential
+      - gettext
+      - libgtk-3-dev
+      - valac
+      - libjson-glib-dev
+      - meson
+      - ninja-build
+      - debhelper
+      - libsoup2.4-dev
+      - libwebkit2gtk-4.0-dev
+      - libayatana-appindicator3-dev
+    stage-packages:
+      - dbus
+      - libgtk-3-0
+      - libwebkit2gtk-4.0-37
+      - libayatana-appindicator3-1
