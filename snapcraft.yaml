@@ -8,7 +8,7 @@ description: |
 grade: stable
 confinement: strict
 base: core20
-architectures: amd64
+architectures: [amd64, arm64]
 
 plugs:
   gnome-3-38-2004:
