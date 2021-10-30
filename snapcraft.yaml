@@ -36,7 +36,7 @@ slots:
 
 apps:
   meteo:
-    command: desktop-launch meteo
+    command: bin/desktop-launch $SNAP/usr/bin/com.gitlab.bitseater.meteo
     plugs:
       - x11
       - desktop
