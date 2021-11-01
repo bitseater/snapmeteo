@@ -16,17 +16,17 @@ plugs:
     interface: content
     target: $SNAP/gnome-platform
   gtk-3-themes:
-    default-provider: gtk-common-themes
     interface: content
-    target: $SNAP/data-dir/themes
+    target: $SNAP/share/themes
+    default-provider: gtk-common-themes
   icon-themes:
-    default-provider: gtk-common-themes
     interface: content
-    target: $SNAP/data-dir/icons
+    target: $SNAP/share/icons
+    default-provider: gtk-common-themes
   sound-themes:
-    default-provider: gtk-common-themes
     interface: content
-    target: $SNAP/data-dir/sounds
+    target: $SNAP/share/sounds
+    default-provider: gtk-common-themes
 
 slots:
   dbus-meteo:
