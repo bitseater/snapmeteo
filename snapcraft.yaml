@@ -1,5 +1,5 @@
 name: meteo
-version: '0.9.9'
+version: '0.9.9.1'
 summary: Know the forecast of the next hours and days, with data and maps
 description: |
   Current weather, with information about temperature, pressure, wind
@@ -73,7 +73,7 @@ parts:
       mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
   meteo-app:
     after: [meson, desktop-gnome-platform]
-    source: https://gitlab.com/bitseater/meteo/-/archive/0.9.9/meteo-0.9.9.tar
+    source: https://gitlab.com/bitseater/meteo/-/archive/0.9.9.1/meteo-0.9.9.1.tar.gz
     source-type: tar
     plugin: meson
     meson-parameters: [--prefix=/usr]
