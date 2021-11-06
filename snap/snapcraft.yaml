@@ -57,6 +57,7 @@ apps:
     environment:
       GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
       LD_LIBRARY_PATH: $SNAP/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/:$LD_LIBRARY_PATH
+      XDG_DATA_HOME": $SNAP_USER_DATA/.local/share
     desktop: usr/share/applications/com.gitlab.bitseater.meteo.desktop
 
 parts:
