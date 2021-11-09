@@ -102,3 +102,7 @@ parts:
       - libwebkit2gtk-4.0-37
       - libayatana-appindicator3-1
       - gsettings-desktop-schemas
+
+layout:
+  /usr/share/icons:
+	bind: $SNAP/usr/share/icons
